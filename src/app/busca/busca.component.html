@@ -1,0 +1,16 @@
+<div class="container">
+
+  <div class="input-group my-5">
+    <input type="text" [(ngModel)]="buscaUsuarios" class="form-control" placeholder="Nome do usuário" aria-label="Nome do usuário" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" (click)="getUser()" type="button">Buscar</button>
+    </div>
+  </div>
+
+  <p *ngIf="totalUsuarios"><strong>Foram encontrados {{totalUsuarios}} usuários</strong></p>
+
+  <div *ngFor="let usuario of usuarios">
+    <a routerLink="{{ usuario.login }}">{{usuario.login}}</a>
+  </div>
+
+</div>

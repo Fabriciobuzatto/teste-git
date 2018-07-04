@@ -9,8 +9,10 @@ import { SearchService } from '../resources/search.service';
 export class BuscaComponent implements OnInit {
 
   usuarios: Object[];
+  dadosUsuario: Object[] = [];
   buscaUsuarios: string;
   totalUsuarios:string;
+
 
   constructor(private $searchService: SearchService) { 
     
@@ -20,10 +22,22 @@ export class BuscaComponent implements OnInit {
     this.$searchService.users(this.buscaUsuarios).subscribe( usuariosRetornados => {
       this.usuarios = usuariosRetornados.items.slice(0, 10);
       this.totalUsuarios = usuariosRetornados.total_count;
+
+      console.log(this.usuarios);
+
+      this.usuarios.forEach(element => {
+        this.getTotalFollowers(element.login);
+      });
+
     });
   }
 
-  getTotalUsers() {
+  getTotalFollowers(usuariosBuscados):void {
+    this.$searchService.getUser(usuariosBuscados).subscribe( dadosUsuarioInscricao => {
+      //this.usuarioIsolado = dadosUsuarioInscricao;
+      //console.log(dadosUsuarioInscricao);
+      this.dadosUsuario.push(dadosUsuarioInscricao);
+    });
   }
 
   goUser(rota) {

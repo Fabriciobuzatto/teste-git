@@ -11,6 +11,16 @@
 
   <div *ngFor="let usuario of usuarios">
     <a routerLink="{{ usuario.login }}">{{usuario.login}}</a>
+    <hr>
   </div>
+
+  <div class="my-5">
+    <div class="progress my-3" *ngFor="let usuarioFinal of dadosUsuario">
+      <div class="progress-bar bg-success" role="progressbar" 
+      style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{usuarioFinal.login}} - {{usuarioFinal.followers}}</div>
+    </div>    
+  </div>
+
+
 
 </div>

@@ -24,4 +24,10 @@ export class SearchService {
     );
   }
 
+  // getFollowers(){
+  //   return this.http.get(`https://api.github.com/users/${valorUrlUsuario}`).pipe(
+  //     map(res => res.json())
+  //   );
+  // }
+
 }
